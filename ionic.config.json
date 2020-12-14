@@ -1,0 +1,7 @@
+{
+  "name": "ionic_play_test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
