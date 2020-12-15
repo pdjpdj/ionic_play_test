@@ -9,7 +9,6 @@ interface GameListControlsProps {
 }
 
 const GameListControls: React.FC<GameListControlsProps> = (props: GameListControlsProps) => {
-
   const {first, prev, next, last} = props.meta.pagination.Link;
   const currentPage = props.meta.pagination['Current-Page'];
   const totalPages = props.meta.pagination['Total-Pages'];

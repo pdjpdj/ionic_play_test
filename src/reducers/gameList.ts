@@ -1,7 +1,3 @@
-// interface CoversUrl {
-//   service_url: string;
-// }
-
 export interface GameListMetaData {
   pagination: {
     Link: {
@@ -48,9 +44,16 @@ const gameListActionTypes = {
 };
 
 export const gameListActionCreators = {
-  loading: () => ({type: gameListActionTypes.LOADING}),
-  failure: () => ({type: gameListActionTypes.FAILURE}),
-  success: (payload: GameListActionPayload) => ({type: gameListActionTypes.SUCCESS, payload}),
+  loading: () => ({
+    type: gameListActionTypes.LOADING
+  }),
+  failure: () => ({
+    type: gameListActionTypes.FAILURE
+  }),
+  success: (payload: GameListActionPayload) => ({
+    type: gameListActionTypes.SUCCESS, 
+    payload
+  }),
 };
 
 export const gameListInitialState: GameListState = {
@@ -66,16 +69,16 @@ export function gameListReducer(
 ): GameListState {
   switch (action.type) {
     case gameListActionTypes.LOADING:
-      return {...state, loading: true, error: false};
+      return {...state, loading: true, error: false,};
     case gameListActionTypes.FAILURE:
-      return {...state, loading: false, error: true};
+      return {...state, loading: false, error: true,};
     case gameListActionTypes.SUCCESS:
       return {
         ...state, 
         loading: false, 
         error: false, 
         gameList: action.payload?.games, 
-        meta: action.payload?.meta
+        meta: action.payload?.meta,
       };
     default:
       return state;

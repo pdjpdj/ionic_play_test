@@ -11,7 +11,7 @@ interface GameListProps {
 
 const GameList: React.FC<GameListProps> = (props: GameListProps) => {
   const [state, dispatch] = useReducer(gameListReducer, gameListInitialState);
-  const [gameListUrl, setGameListUrl] = useState(props.url)
+  const [gameListUrl, setGameListUrl] = useState(props.url);
 
   const {loading, gameList, error, meta} = state;
 
