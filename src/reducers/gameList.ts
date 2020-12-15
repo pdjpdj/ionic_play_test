@@ -6,8 +6,8 @@ export interface GameListMetaData {
       next: string | undefined;
       last: string | undefined;
     },
-    "Current-Page": string;
-    "Total-Pages": string;
+    'Current-Page': string;
+    'Total-Pages': string;
   };
 }
 

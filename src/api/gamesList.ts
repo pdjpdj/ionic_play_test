@@ -6,6 +6,9 @@ interface GamesResponse {
   meta: GameListMetaData;
 }
 
+export const GAME_LIST_URL = 'https://games.directory/api/v1/play_station/games/';
+export const GAME_LIST_SEARCH_URL = 'https://games.directory/api/v1/play_station/games?query=';
+
 export async function fetchGames(url: string, dispatch: React.Dispatch<GameListAction>) {
   dispatch(gameListActionCreators.loading());
   try {

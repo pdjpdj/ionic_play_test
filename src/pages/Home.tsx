@@ -1,5 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
+import { GAME_LIST_URL } from '../api/gamesList';
 import GameList from '../components/GameList';
 import './Home.css';
 
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <GameList url='https://games.directory/api/v1/play_station/games/'/>
+        <GameList url={GAME_LIST_URL}/>
       </IonContent>
     </IonPage>
   );

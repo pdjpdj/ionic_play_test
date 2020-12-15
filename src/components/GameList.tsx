@@ -1,9 +1,10 @@
-import { IonItem, IonLabel, IonList, IonLoading, IonThumbnail } from '@ionic/react';
+import { IonContent, IonInput, IonList, IonLoading } from '@ionic/react';
 import React, { useEffect, useReducer, useState } from 'react';
-import { fetchGames } from '../api/gamesList';
+import { fetchGames, GAME_LIST_SEARCH_URL } from '../api/gamesList';
 import { gameListInitialState, GameListItem, gameListReducer } from '../reducers/gameList';
 import './GameList.css';
 import GameListControls from './GameListControls';
+import ListItem from './ListItem';
 
 interface GameListProps {
   url: string;
@@ -12,12 +13,18 @@ interface GameListProps {
 const GameList: React.FC<GameListProps> = (props: GameListProps) => {
   const [state, dispatch] = useReducer(gameListReducer, gameListInitialState);
   const [gameListUrl, setGameListUrl] = useState(props.url);
+  const [searchValue, setSearchValue] = useState('');
 
   const {loading, gameList, error, meta} = state;
 
   useEffect(() => {
     fetchGames(gameListUrl, dispatch);
   }, [gameListUrl]);
+
+  const setSearchUrl = (searchTerm: string) => {
+    setSearchValue(searchTerm);
+    setGameListUrl(`${GAME_LIST_SEARCH_URL}${searchTerm}`);
+  }
 
   if (loading) {
     return (
@@ -40,35 +47,21 @@ const GameList: React.FC<GameListProps> = (props: GameListProps) => {
   }
 
   return (
-    <IonList>
-      {gameList ? 
-        gameList.map((game: GameListItem) => (
-          game.name ?
-            <IonItem key={game.id}>
-               <IonThumbnail slot='start'>
-                  <img src={game.covers.service_url} alt={game.name}/>
-                </IonThumbnail>
-                <div>
-                  <IonLabel>{game.name}</IonLabel>
-                  {game.platforms?
-                    <IonLabel>{game.platforms.map(platform => (platform))}</IonLabel>
-                    : ""
-                  }
-                </div>
-            </IonItem>
-            : 
-            <IonItem key={game.id}>
-              <IonLabel>No data</IonLabel>
-            </IonItem>
-            
-        )) : 
-        'nothing loaded'
-      }
+    <IonContent>
+      <IonInput placeholder='Search games' type='text' value={searchValue} onIonChange={e => setSearchUrl(e.detail.value!)} debounce={500}></IonInput>
+      <IonList>
+        {gameList ? 
+          gameList.map((game: GameListItem) => (
+            <ListItem game={game} key={game.id} />  
+          )) : 
+          'nothing loaded'
+        }
+      </IonList>
       {meta ? 
         <GameListControls meta={meta} gameListReloadUrl={setGameListUrl}/>
-        : <div></div>
+        : null
       }
-    </IonList>
+    </IonContent>
   );
 };
 
