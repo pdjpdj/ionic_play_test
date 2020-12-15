@@ -12,7 +12,7 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <GameList />
+        <GameList url='https://games.directory/api/v1/play_station/games/'/>
       </IonContent>
     </IonPage>
   );

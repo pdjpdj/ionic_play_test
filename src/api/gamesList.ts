@@ -1,23 +1,25 @@
 import React from 'react';
-import { GameListAction, gameListActionCreators, GameListItem } from '../reducers/gameList';
-
+import { GameListAction, gameListActionCreators, GameListItem, GameListMetaData } from '../reducers/gameList';
 interface GamesResponse {
   success: boolean;
   games: GameListItem[];
-  meta: any;
+  meta: GameListMetaData;
 }
 
-export async function fetchGames(dispatch: React.Dispatch<GameListAction>) {
+export async function fetchGames(url: string, dispatch: React.Dispatch<GameListAction>) {
   dispatch(gameListActionCreators.loading());
   try {
     const response = await fetch(
-      `https://games.directory/api/v1/play_station/games/`,
+      url,
       {
         method: 'GET',
       },
     );
     const games: GamesResponse = await response.json();
-    dispatch(gameListActionCreators.success(games.games));
+    dispatch(gameListActionCreators.success({
+      games: games.games, 
+      meta: games.meta
+    }));
   } catch (e) {
     dispatch(gameListActionCreators.failure());
   }
