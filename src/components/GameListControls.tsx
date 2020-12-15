@@ -13,10 +13,10 @@ const GameListControls: React.FC<GameListControlsProps> = (props: GameListContro
   const currentPage = props.meta.pagination['Current-Page'];
   const totalPages = props.meta.pagination['Total-Pages'];
   return (
-    <section>
+    <section className='controls'>
       <IonButton size='small' disabled={!first} onClick={() => props.gameListReloadUrl(first || '')}>First</IonButton>
       <IonButton size='small' disabled={!prev} onClick={() => props.gameListReloadUrl(prev || '')}>Prev</IonButton>
-      <IonLabel>( {currentPage} / {totalPages} )</IonLabel>
+      <IonLabel>{currentPage} / {totalPages}</IonLabel>
       <IonButton size='small' disabled={!next} onClick={() => props.gameListReloadUrl(next || '')}>Next</IonButton>
       <IonButton size='small' disabled={!last} onClick={() => props.gameListReloadUrl(last || '')}>Last</IonButton>
     </section>

@@ -1,7 +1,7 @@
 import { IonItem, IonLabel, IonThumbnail } from '@ionic/react';
 import React from 'react';
 import { GameListItem } from '../reducers/gameList';
-import './GameListControls.css';
+import './ListItem.css';
 
 interface ListProps {
   game: GameListItem,
@@ -18,7 +18,7 @@ const ListItem: React.FC<ListProps> = (props: ListProps) => {
         <div>
           <IonLabel>{game.name}</IonLabel>
           {game.platforms?
-            <IonLabel>{game.platforms.map(platform => (platform))}</IonLabel>
+            <IonLabel><div className='platform'>{game.platforms.map(platform => (`${platform} `))}</div></IonLabel>
             : ''
           }
         </div>

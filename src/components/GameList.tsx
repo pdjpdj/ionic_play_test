@@ -1,4 +1,4 @@
-import { IonContent, IonInput, IonList, IonLoading } from '@ionic/react';
+import { IonContent, IonFooter, IonInput, IonList, IonHeader, IonLoading, IonToolbar, IonIcon, IonItem } from '@ionic/react';
 import React, { useEffect, useReducer, useState } from 'react';
 import { fetchGames, GAME_LIST_SEARCH_URL } from '../api/gamesList';
 import { gameListInitialState, GameListItem, gameListReducer } from '../reducers/gameList';
@@ -30,7 +30,6 @@ const GameList: React.FC<GameListProps> = (props: GameListProps) => {
     return (
       <div>
         <IonLoading
-          cssClass='my-custom-class'
           isOpen={loading}
           message={'Loading games...'}
         />
@@ -47,21 +46,29 @@ const GameList: React.FC<GameListProps> = (props: GameListProps) => {
   }
 
   return (
-    <IonContent>
-      <IonInput placeholder='Search games' type='text' value={searchValue} onIonChange={e => setSearchUrl(e.detail.value!)} debounce={500}></IonInput>
-      <IonList>
-        {gameList ? 
-          gameList.map((game: GameListItem) => (
-            <ListItem game={game} key={game.id} />  
-          )) : 
-          'nothing loaded'
-        }
-      </IonList>
+    <>
+      <IonHeader className='search-header'>
+        <IonInput className='search-input' placeholder='Search games' type='text' value={searchValue} onIonChange={e => setSearchUrl(e.detail.value!)} debounce={500}></IonInput>
+      </IonHeader>
+      <IonContent>
+        <IonList>
+          {gameList ? 
+            gameList.map((game: GameListItem) => (
+              <ListItem game={game} key={game.id} />  
+            )) : 
+            'nothing loaded'
+          }
+        </IonList>
+      </IonContent>
       {meta ? 
-        <GameListControls meta={meta} gameListReloadUrl={setGameListUrl}/>
+        <IonFooter>
+          <IonToolbar>
+            <GameListControls meta={meta} gameListReloadUrl={setGameListUrl}/>
+          </IonToolbar>
+        </IonFooter>
         : null
       }
-    </IonContent>
+    </>
   );
 };
 
