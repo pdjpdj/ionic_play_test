@@ -11,7 +11,7 @@ const ListItem: React.FC<ListProps> = (props: ListProps) => {
   const {game} = props;
   return (
     game.name ?
-      <IonItem>
+      <IonItem routerLink={`/game/${game.name}/${game.slug}`}>
         <IonThumbnail slot='start'>
           <img src={game.covers.service_url} alt={game.name}/>
         </IonThumbnail>

@@ -1,4 +1,4 @@
-import { IonContent, IonFooter, IonInput, IonList, IonHeader, IonLoading, IonToolbar, IonIcon, IonItem } from '@ionic/react';
+import { IonContent, IonFooter, IonInput, IonList, IonHeader, IonLoading, IonToolbar } from '@ionic/react';
 import React, { useEffect, useReducer, useState } from 'react';
 import { fetchGames, GAME_LIST_SEARCH_URL } from '../api/gamesList';
 import { gameListInitialState, GameListItem, gameListReducer } from '../reducers/gameList';

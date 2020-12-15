@@ -18,6 +18,7 @@ export interface GameListItem {
   covers: {
     service_url: string | undefined;
   };
+  slug: string | undefined;
 }
 
 interface GameListState {
