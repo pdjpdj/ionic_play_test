@@ -9,6 +9,7 @@ interface GameMeta {
 }
 
 interface GameTrophy {
+  id: number;
   name: string;
   covers: {
     service_url: string;
@@ -16,10 +17,17 @@ interface GameTrophy {
 }
 
 interface GameMedia {
+  id: number;
   remote_type: string;
   covers: {
     service_url: string;
   };
+}
+
+interface GameSku {
+  id: number;
+  price_cents: number;
+  price_currency: string;
 }
 
 export interface GameDetailItem {
@@ -35,6 +43,10 @@ export interface GameDetailItem {
   covers: {
     service_url: string | undefined;
   };
+  rating: {
+    score: number;
+  };
+  skus: GameSku[];
   slug: string | undefined;
 }
 
