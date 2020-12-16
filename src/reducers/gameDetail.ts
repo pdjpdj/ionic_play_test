@@ -36,6 +36,7 @@ export interface GameDetailItem {
   platforms: string[] | undefined;
   description: string;
   publishers: GameInfo[];
+  content_ratings: GameInfo[];
   genres: GameMeta[];
   trophies: GameTrophy[];
   release_date: string;

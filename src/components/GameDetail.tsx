@@ -2,7 +2,10 @@ import { IonContent, IonLoading,IonLabel, IonCard, IonImg } from '@ionic/react';
 import React, { useEffect, useReducer } from 'react';
 import { fetchGame } from '../api/gamesDetail';
 import { gameDetailInitialState, gameDetailReducer } from '../reducers/gameDetail';
+import Description from './Description';
 import './GameDetail.css';
+import Platform from './Platform';
+import Price from './Price';
 
 interface GameDetailProps {
   slug: string;
@@ -42,21 +45,16 @@ const GameDetail: React.FC<GameDetailProps> = (props: GameDetailProps) => {
         <IonCard className='game-card'>
           <IonImg src={gameDetail.covers.service_url} alt={gameDetail.name} className='cover-image'></IonImg>
           <IonCard className='game-detail'>
-            <IonLabel>{gameDetail.name}</IonLabel>
-            <IonLabel>Platform: {gameDetail.platforms?.map(platform => platform)}</IonLabel>
-            <IonLabel>Publisher: {gameDetail.publishers[0].label}</IonLabel>
-            {gameDetail.genres.length 
-              ?
-              <IonLabel>Genre: {gameDetail.genres[0].value}</IonLabel>
-              : null
-            }
-            <IonLabel>Release date: {(new Date(gameDetail.release_date)).toLocaleDateString()}</IonLabel>
-            <IonLabel>Rating: {gameDetail.rating.score}</IonLabel>
-            <IonLabel>Price: {new Intl.NumberFormat("en-GB", {
-                style: "currency",
-                currency: gameDetail.skus[0].price_currency
-              }).format(gameDetail.skus[0].price_cents/100)}</IonLabel>
-            <div dangerouslySetInnerHTML={{ __html: gameDetail.description }} />
+            <IonLabel><h1>{gameDetail.name}</h1></IonLabel>
+            <Platform game={gameDetail} />
+            <IonCard className='game-info'>
+              <IonLabel>Release date: {(new Date(gameDetail.release_date)).toLocaleDateString()}</IonLabel>
+              {gameDetail.content_ratings.length ? <IonLabel>Parental rating: {gameDetail.content_ratings[0].label}</IonLabel> : null}
+              {gameDetail.rating ? <IonLabel>Star rating: {gameDetail.rating.score}</IonLabel> : null}
+              <Price game={gameDetail} />
+            </IonCard>
+            <Description game={gameDetail} />
+            
             <div className='game-trophies'>
               {gameDetail.trophies.length
                 ?
