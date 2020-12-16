@@ -1,4 +1,4 @@
-import { IonItem, IonLabel, IonThumbnail } from '@ionic/react';
+import { IonImg, IonItem, IonLabel, IonThumbnail } from '@ionic/react';
 import React from 'react';
 import { GameListItem } from '../reducers/gameList';
 import './ListItem.css';
@@ -13,7 +13,7 @@ const ListItem: React.FC<ListProps> = (props: ListProps) => {
     game.name ?
       <IonItem routerLink={`/game/${game.name}/${game.slug}`}>
         <IonThumbnail slot='start'>
-          <img src={game.covers.service_url} alt={game.name}/>
+          <IonImg src={game.covers.service_url} alt={game.name}/>
         </IonThumbnail>
         <div>
           <IonLabel>{game.name}</IonLabel>

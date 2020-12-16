@@ -1,7 +1,8 @@
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
-import './Home.css';
+import GameDetail from '../components/GameDetail';
+import './Game.css';
 
 interface GameProps extends RouteComponentProps<{
   name: string;
@@ -20,8 +21,7 @@ const Game: React.FC<GameProps> = ({match}) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <br />
-        slug: {match.params.slug}
+        <GameDetail slug={match.params.slug}/>
       </IonContent>
     </IonPage>
   );
