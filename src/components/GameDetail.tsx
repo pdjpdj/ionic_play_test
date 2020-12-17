@@ -4,6 +4,7 @@ import { fetchGame } from '../api/gamesDetail';
 import { gameDetailInitialState, gameDetailReducer } from '../reducers/gameDetail';
 import Description from './Description';
 import './GameDetail.css';
+import MediaCentre from './MediaCentre';
 import Platform from './Platform';
 import Price from './Price';
 import TrophyCabinet from './TrophyCabinet';
@@ -56,19 +57,7 @@ const GameDetail: React.FC<GameDetailProps> = (props: GameDetailProps) => {
             </IonCard>
             <Description game={gameDetail} />
             <TrophyCabinet game={gameDetail} />
-            {gameDetail.medias.length
-              ?
-              gameDetail.medias.map(media => {
-                if (media.remote_type === 'screenshot') {
-                  return <IonImg src={media.covers.service_url} key={media.id}></IonImg>
-                } else {
-                  return <video controls playsInline preload='none' key={media.id}>
-                    <source src={media.covers.service_url} type='video/mp4'/>
-                  </video>
-                }
-              })
-              : null
-            }
+            <MediaCentre game={gameDetail} />
           </IonCard>
         </IonCard>
         : 

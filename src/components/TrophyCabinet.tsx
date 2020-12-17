@@ -22,7 +22,7 @@ const TrophyCabinet: React.FC<TrophyCabinetProps> = (props: TrophyCabinetProps) 
             {game.trophies.map((trophy: GameTrophy) => (
                 <IonItem key={trophy.id}>
                   <IonThumbnail slot='start'>
-                    <IonImg src={trophy.covers.service_url} alt={game.name}/>
+                    <IonImg src={trophy.covers.service_url} alt={trophy.name}/>
                   </IonThumbnail>
                   <IonLabel>{trophy.name}</IonLabel>
                 </IonItem>
@@ -43,7 +43,7 @@ const TrophyCabinet: React.FC<TrophyCabinetProps> = (props: TrophyCabinetProps) 
                 {trophies.map((trophy: GameTrophy) => (
                   <div key={trophy.id} className='trophy-name'>
                     <IonThumbnail className='trophy-thumb'>
-                      <IonImg src={trophy.covers.service_url} alt={game.name}/>
+                      <IonImg src={trophy.covers.service_url} alt={trophy.name}/>
                     </IonThumbnail>
                     <IonLabel>{trophy.name}</IonLabel>
                   </div>

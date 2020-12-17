@@ -16,7 +16,7 @@ export interface GameTrophy {
   };
 }
 
-interface GameMedia {
+export interface GameMedia {
   id: number;
   remote_type: string;
   covers: {

@@ -1,0 +1,22 @@
+.media-centre {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.media-centre-modal {
+  padding: 1rem;
+}
+
+.medias {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "video video ."
+    "video video .";
+}
+
+.media-centre-toolbar {
+  text-align: center;
+}
