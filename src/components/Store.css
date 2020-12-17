@@ -1,0 +1,11 @@
+.category {
+  font-size: 0.75rem;
+  color: gray;
+  padding-top: 0.25rem;
+}
+
+.store {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}

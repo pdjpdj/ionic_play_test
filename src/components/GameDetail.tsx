@@ -7,6 +7,7 @@ import './GameDetail.css';
 import MediaCentre from './MediaCentre';
 import Platform from './Platform';
 import Price from './Price';
+import Store from './Store';
 import TrophyCabinet from './TrophyCabinet';
 
 interface GameDetailProps {
@@ -58,6 +59,7 @@ const GameDetail: React.FC<GameDetailProps> = (props: GameDetailProps) => {
             <Description game={gameDetail} />
             <TrophyCabinet game={gameDetail} />
             <MediaCentre game={gameDetail} />
+            <Store slug={props.slug} />
           </IonCard>
         </IonCard>
         : 
