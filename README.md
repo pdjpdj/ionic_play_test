@@ -30,5 +30,7 @@ After cloning the project you can run it doing:
 
 ### TO DO:
 1. Fix warning after clicking on store item.
-2. Find good solution for caching images using Ionic and React, probably using [Progressive Web Apps in React](https://ionicframework.com/docs/react/pwa)
+2. Find good solution for caching images using Ionic and React
+    - probably using [Progressive Web Apps in React](https://ionicframework.com/docs/react/pwa)
+    - could have used [ionic-image-loader](https://github.com/zyra/ionic-image-loader) but there isn't a version for React yet.
 3. Get store images (probably have to get the data from ```https://games.directory/api/v1/play_station/games/<GAME_SLUG>```)
