@@ -22,7 +22,7 @@ const MediaCentre: React.FC<MediaCentreProps> = (props: MediaCentreProps) => {
             <IonContent className='media-centre-modal'>
               <IonList>
                 {game.medias.map((media: GameMedia) => 
-                    <MediaItem media={media} cover={game.covers.service_url} key={media.id}/>
+                    <MediaItem media={media} cover={game.covers.service_url} key={media.id} isFirst={true}/>
                   )
                 }
               </IonList>
@@ -36,8 +36,8 @@ const MediaCentre: React.FC<MediaCentreProps> = (props: MediaCentreProps) => {
           <IonLabel >Media centre:</IonLabel>
           <div>
             <div className='medias'>
-              {medias.map((media: GameMedia) => 
-                <MediaItem media={media} cover={game.covers.service_url} key={media.id}/>
+              {medias.map((media: GameMedia, index: number) => 
+                <MediaItem media={media} cover={game.covers.service_url} key={media.id} isFirst={index===0}/>
               )}
             </div>
             {medias.length < game.medias.length
