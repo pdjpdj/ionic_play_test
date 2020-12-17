@@ -10,8 +10,15 @@
 .trophies {
   margin-top: 1rem;
   display: flex;
-  justify-content: left;
+  justify-content: space-evenly;
   align-items: flex-end;
+}
+.trophy-name {
+  text-align: center;
+}
+.trophy-thumb {
+  margin-left: auto;
+  margin-right: auto;
 }
 .cabinet-toolbar {
   text-align: center;

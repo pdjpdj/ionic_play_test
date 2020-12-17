@@ -10,8 +10,9 @@ interface TrophyCabinetProps {
 const TrophyCabinet: React.FC<TrophyCabinetProps> = (props: TrophyCabinetProps) => {
   const [showModal, setShowModal] = useState(false);
   const {game} = props;
+  const maxTrophies = 4;
 
-  const trophies = game.trophies.length > 3 ? game.trophies.slice(0, 3) : game.trophies;
+  const trophies = game.trophies.length > maxTrophies ? game.trophies.slice(0, maxTrophies) : game.trophies;
   
   return (
     <IonCard className='cabinet'>
@@ -37,20 +38,22 @@ const TrophyCabinet: React.FC<TrophyCabinetProps> = (props: TrophyCabinetProps) 
       <IonLabel >Trophies:</IonLabel>
         {trophies.length
           ?
-          <div className='trophies'>
-              {trophies.map((trophy: GameTrophy) => (
-                <div key={trophy.id}>
-                  <IonThumbnail>
-                    <IonImg src={trophy.covers.service_url} alt={game.name}/>
-                  </IonThumbnail>
-                  <IonLabel>{trophy.name}</IonLabel>
-                </div>
-              ))}
-              {trophies.length < game.trophies.length
-                ?
-                <IonButton size='small' onClick={() => setShowModal(!showModal)}>Show all {game.trophies.length} trophies</IonButton>
-                : null
-              }
+          <div>
+            <div className='trophies'>
+                {trophies.map((trophy: GameTrophy) => (
+                  <div key={trophy.id} className='trophy-name'>
+                    <IonThumbnail className='trophy-thumb'>
+                      <IonImg src={trophy.covers.service_url} alt={game.name}/>
+                    </IonThumbnail>
+                    <IonLabel>{trophy.name}</IonLabel>
+                  </div>
+                ))}
+            </div>
+            {trophies.length < game.trophies.length
+              ?
+              <IonButton size='small' onClick={() => setShowModal(!showModal)}>Show all {game.trophies.length} trophies</IonButton>
+              : null
+            }
           </div>
           :
           <IonLabel>No trophies for this game</IonLabel>

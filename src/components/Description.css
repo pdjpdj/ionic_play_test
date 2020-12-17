@@ -1,7 +1,5 @@
 .description {
   padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
 }
 .description-modal {
   margin: 1rem;
