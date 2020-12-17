@@ -21,9 +21,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.game-trophies {
-  display: flex;
-  justify-content: left;
-  align-items: flex-start;
-}

@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonContent, IonLabel, IonModal } from '@ionic/react';
+import { IonButton, IonCard, IonContent, IonFooter, IonLabel, IonModal, IonToolbar } from '@ionic/react';
 import React, { useState } from 'react';
 import { GameDetailItem } from '../reducers/gameDetail';
 import './Description.css';
@@ -10,7 +10,6 @@ interface DescriptionProps {
 const Description: React.FC<DescriptionProps> = (props: DescriptionProps) => {
   const [showModal, setShowModal] = useState(false);
   const {game} = props;
-  console.log(game.description);
   let desc = null
     if (game.description) {
       desc = game.description.match(/<b[^>]*>([^<]+)<\/b>/);
@@ -25,8 +24,12 @@ const Description: React.FC<DescriptionProps> = (props: DescriptionProps) => {
         <IonModal isOpen={showModal}>
           <IonContent>
             <div className='description-modal' dangerouslySetInnerHTML={{ __html: game.description }} />
-            <IonButton onClick={() => setShowModal(!showModal)}>Close full description</IonButton>
           </IonContent>
+          <IonFooter>
+            <IonToolbar className='description-toolbar'>
+              <IonButton onClick={() => setShowModal(!showModal)}>Close full description</IonButton>
+            </IonToolbar>
+          </IonFooter>
         </IonModal>
         <IonLabel >Description:</IonLabel>
         <div dangerouslySetInnerHTML={{ __html: desc?.length ? desc[0] : '' }} />

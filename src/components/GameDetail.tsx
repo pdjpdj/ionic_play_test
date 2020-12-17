@@ -6,6 +6,7 @@ import Description from './Description';
 import './GameDetail.css';
 import Platform from './Platform';
 import Price from './Price';
+import TrophyCabinet from './TrophyCabinet';
 
 interface GameDetailProps {
   slug: string;
@@ -54,17 +55,7 @@ const GameDetail: React.FC<GameDetailProps> = (props: GameDetailProps) => {
               <Price game={gameDetail} />
             </IonCard>
             <Description game={gameDetail} />
-            
-            <div className='game-trophies'>
-              {gameDetail.trophies.length
-                ?
-                gameDetail.trophies.map(trophy => (
-                  <IonImg src={trophy.covers.service_url} key={trophy.id}></IonImg>
-                ))
-                :
-                <IonLabel>No trophies for this game</IonLabel>
-              }
-            </div>
+            <TrophyCabinet game={gameDetail} />
             {gameDetail.medias.length
               ?
               gameDetail.medias.map(media => {

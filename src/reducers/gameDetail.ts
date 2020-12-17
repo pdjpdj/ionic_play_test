@@ -8,7 +8,7 @@ interface GameMeta {
   value: string;
 }
 
-interface GameTrophy {
+export interface GameTrophy {
   id: number;
   name: string;
   covers: {

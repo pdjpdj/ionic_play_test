@@ -1,0 +1,18 @@
+.cabinet {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.cabinet-modal {
+  margin: 1rem;
+}
+
+.trophies {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+}
+.cabinet-toolbar {
+  text-align: center;
+}
